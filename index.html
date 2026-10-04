@@ -51,7 +51,7 @@
       float: right;
     }
 
-    #ayuda {
+    .cajaAyuda {
       font-size: 13px;
       background-color: white;
       padding: 10px;
@@ -461,10 +461,16 @@
     // Abre y cierra las instrucciones
     const mostrarAyuda = () => {
       let ayuda = document.getElementById("ayuda");
-      if (ayuda.style.display === "none") {
-        ayuda.style.display = "block";
+      if (ayuda.innerHTML === "") {
+        ayuda.innerHTML = `<div class="cajaAyuda">
+          <p>Los decimales se escriben con punto (2.5), no con coma</p>
+          <p>Las listas se escriben con comas, sin espacios (4,1,7,3)</p>
+          <p>Para las operaciones binarias: escribe un número, pulsa la operación, escribe el segundo número y pulsa =</p>
+          <p>Para la potencia, escribe la base en la caja de arriba y el exponente en su caja pequeña</p>
+          <p>Para eliminar un elemento de la lista, escribe su posición en la caja pequeña (la 1 es la primera)</p>
+        </div>`;
       } else {
-        ayuda.style.display = "none";
+        ayuda.innerHTML = "";
       }
     }
 
@@ -474,15 +480,7 @@
 <body>
   <div class="calculadora">
     <button id="botonAyuda" onclick="mostrarAyuda()">Cómo usarla</button>
-
-    <div id="ayuda" style="display: none;">
-      <p>Los decimales se escriben con punto (2.5), no con coma</p>
-      <p>Las listas se escriben con comas, sin espacios (4,1,7,3)</p>
-      <p>Para las operaciones binarias: escribe un número, pulsa la operación, escribe el segundo número y pulsa =</p>
-      <p>Para la potencia, escribe la base en la caja de arriba y el exponente en su caja pequeña</p>
-      <p>Para eliminar un elemento de la lista, escribe su posición en la caja pequeña (la 1 es la primera)</p>
-
-    </div>
+    <div id="ayuda"></div>
 
     <h1>Calculadora pequeña</h1>
 
